@@ -1,31 +1,31 @@
+
+# 💫 Towards Sharing Tools, and Artifacts, for Reusable Simulation (STARS): a minimal model example
+
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pythonhealthdatascience/stars-treat-sim/HEAD)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/pypi/pyversions/treat_sim)](https://pypi.org/project/treat_sim/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10026326.svg)](https://doi.org/10.5281/zenodo.10026326)
 [![PyPI version fury.io](https://badge.fury.io/py/treat-sim.svg)](https://pypi.org/project/treat-sim/)
-
-
 [<img src="https://img.shields.io/static/v1?label=dockerhub&message=images&color=important?style=for-the-badge&logo=docker">](https://hub.docker.com/r/tommonks01/treat_sim)
-
-
-# Towards Sharing Tools, and Artifacts, for Reusable Simulation: a minimal model example
 
 ## Overview
 
-The materials and methods in this repository support work towards developing the S.T.A.R.S healthcare framework (**S**haring **T**ools and **A**rtifacts for **R**eusable **S**imulations in healthcare).  The code and written materials here demonstrate the application of S.T.A.R.S' version 1 to sharing a `SimPy` discrete-event simulation model and associated research artifacts.  
+The materials and methods in this repository support work towards developing the STARShealthcare framework (**S**haring **T**ools and **A**rtifacts for **R**eusable **S**imulations in healthcare).  The code and written materials here demonstrate the application of STARS version 1 to sharing a `SimPy` discrete-event simulation model and associated research artifacts.  
 
 * All artifacts in this repository are linked to study researchers via ORCIDs;
 * Model code is made available under an MIT license;
-* Python dependencies are managed through `conda`;
-* Documentation of the model is enhanced using a Jupyter notebook.
-* The python code itself can be viewed and executed in Jupyter notebooks via [Binder](https://mybinder.org); 
+* Python dependencies are managed through `mamba`;
+* Documentation of the model is enhanced using a simple Jupyter notebook.
+* The python model itself can be viewed and executed in Jupyter notebooks via [Binder](https://mybinder.org); 
 * The materials are deposited and made citable using Zenodo;
 * The model is sharable with other researchers and the NHS without the need to install software.
+* A full suite of automated tests are provided with the model. 
 
 ## Author ORCIDs
 
-[![ORCID: Harper](https://img.shields.io/badge/ORCID-0000--0001--5274--5037-brightgreen)](https://orcid.org/0000-0001-5274-5037)
-[![ORCID: Monks](https://img.shields.io/badge/ORCID-0000--0003--2631--4481-brightgreen)](https://orcid.org/0000-0003-2631-4481)
+[![ORCID: Harper](https://img.shields.io/badge/Alison_Harper_ORCID-0000--0001--5274--5037-brightgreen)](https://orcid.org/0000-0001-5274-5037)
+[![ORCID: Monks](https://img.shields.io/badge/Tom_Monks_ORCID-0000--0003--2631--4481-brightgreen)](https://orcid.org/0000-0003-2631-4481)
+[![ORCID: Heather](https://img.shields.io/badge/Amy_Heather_ORCID-0000--0002--6596--3479-brightgreen)](https://orcid.org/0000-0002-6596-3479)
 
 ## Funding
 
@@ -35,7 +35,7 @@ This code is part of independent research supported by the National Institute fo
 
 ### Install from PyPI
 
-If you do not wish to you the code or would like to use the model as part of your own work you can install the model as a python package.
+If you do not wish to view the code or would like to use the model as part of your own work you can install the model as a python package.
 
 ```bash
 pip install treat-sim
@@ -59,7 +59,7 @@ git clone https://github.com/pythonhealthdatascience/stars-treat-sim
 
 #### Installing dependencies
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
+[![Python](https://img.shields.io/pypi/pyversions/treat_sim)](https://pypi.org/project/treat_sim/)
 
 All dependencies can be found in [`binder/environment.yml`]() and are pulled from conda-forge.  To run the code locally, we recommend installing [miniforge](https://github.com/conda-forge/miniforge);
 
@@ -111,6 +111,23 @@ if __name__ == '__main__':
     print(results)
 
 ```
+
+The model can be run with different time dependent arrival profiles. By default the model runs with the arrival profile taken from Nelson (2013). The `datasets` module provides access to an alternative example dataset where arrivals are slightly skewed towards the end of the working day.  
+
+```python
+
+from treat_sim.model import Scenario, multiple_replications
+from treat_sim.datasets import load_alternative_arrivals
+
+if __name__ == '__main__':
+
+    # set the arrival profile to later in the day
+    scenario1 = Scenario(arrival_profile=load_alternative_arrivals())
+
+    alternative_results = multiple_replications(scenario1).describe().round(2).T
+    print(alternative_results)
+```
+
 #### Testing the model
 
 > See our [online documentation](https://pythonhealthdatascience.github.io/stars-simpy-example-docs/content/02_model_code/05_testing.html) for an overview of testing
@@ -142,12 +159,15 @@ pytest --cov=treat_sim tests/
 ├── pyproject.toml
 ├── README.md
 ├── tests
+│   └── test_datasets.ipynb
 │   └── test_model.ipynb
 └── treat_sim
     ├── data
     │   └── ed_arrivals.csv
-    ├── distributions.py
+    │   └── ed_arrivals_scenario1.csv
     ├── __init__.py
+    ├── datasets.py
+    ├── distributions.py
     └── model.py
 ```
 
@@ -161,8 +181,9 @@ pytest --cov=treat_sim tests/
 * `tests/` - contains automated testing code
 * `treat_sim/` - contains packaged version of the model.
     * `data/` - directory containing data file used by package.
-    * `distributions.py` - distribution classes.
     * `__init__.py` - required as part of package - contains author and version.
+    * `datasets.py` - functions to load example dataset for parameterising the model.
+    * `distributions.py` - distribution classes.
     * `model.py` - example SimPy model.
 
 
@@ -182,7 +203,7 @@ Monks, T., Harper, A., & Heather, A. (2024). Towards Sharing Tools, and Artifact
   month        = May,
   year         = 2024,
   publisher    = {Zenodo},
-  version      = {v2.0.0},
+  version      = {v2.2.0},
   doi          = {10.5281//zenodo.10026326.},
   url          = {https://doi.org/10.5281//zenodo.10026326}
 }

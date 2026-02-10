@@ -7,7 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Consistent identifier (represents all versions, resolves to latest): [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10026326.svg)](https://doi.org/10.5281/zenodo.10026326)
 
-## [v2.1.0]() - 2024-05-30
+## [v2.2.0](https://github.com/pythonhealthdatascience/stars-treat-sim/releases/tag/v2.2.0) - 2024-08-01
+
+### Added
+
+* All model classes and functions now have python type hints
+* `treat_sim.datasets` module with `load_nelson_arrivals`, `load_alternative_arrivals` and `valid_arrival_profile` functions
+* `tests/test_datasets.py` contains functional and dirty tests for loading and using internal arrival profile datasets.
+
+### Changed
+
+* `Scenario` defaults to the time dependent arrival profile given in Nelson (2013), but also accepts `arrival_profile` a `pandas.DataFrame` parameter for scenario analysis. 
+* Default arrival profile is sourced from local package rather than GitHub URL.
+
+### Fixed
+
+* MODEL: thinning algorithm: `np.Inf` -> `np.inf` for compatibility with `numpy>=2`
+
+## [v2.1.0](https://github.com/pythonhealthdatascience/stars-treat-sim/releases/tag/v2.1.0) - 2024-05-30 - [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11396022.svg)](https://doi.org/10.5281/zenodo.11396022)
 
 ### Changes
 
