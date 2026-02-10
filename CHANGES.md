@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Consistent identifier (represents all versions, resolves to latest): [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10026326.svg)](https://doi.org/10.5281/zenodo.10026326)
 
+## v3.0.0 UNRELEASED
+
+## Changed
+
+* BREAKING: dropped support for Python 3.8 and 3.9.
+* DOCS: updated development environment to use latest packages as of 10th Feb 2026.
+
 ## [v2.2.0](https://github.com/pythonhealthdatascience/stars-treat-sim/releases/tag/v2.2.0) - 2024-08-01
 
 ### Added
