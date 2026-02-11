@@ -35,7 +35,7 @@ import simpy
 
 from typing import Optional, Union, List, Dict
 
-from treat_sim.distributions import Exponential, Normal, Uniform, Bernoulli, Lognormal
+from sim_tools.distributions import Exponential, Normal, Uniform, Bernoulli, Lognormal
 from treat_sim.datasets import load_nelson_arrivals, valid_arrival_profile
 
 # Constants and defaults for modelling **as-is**
