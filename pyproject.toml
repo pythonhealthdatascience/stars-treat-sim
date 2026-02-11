@@ -24,7 +24,8 @@ dependencies = [
     "numpy>=1.19.2",
     "pandas>=1.2.3",
     "scipy>=1.6.1",
-    "simpy>=4.0.1"
+    "simpy>=4.0.1",
+    "sim-tools>=1.0.3",
 ]
 
 [project.urls]
