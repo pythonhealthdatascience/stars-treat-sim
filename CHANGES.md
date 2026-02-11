@@ -18,6 +18,7 @@ Consistent identifier (represents all versions, resolves to latest): [![DOI](htt
 * BREAKING: Examination time changed from Normal distribution to truncated normal where lower bound is zero.
 * MODEL: distributions module replaced by equivalent imports from `sim-tools`
 * DOCS: updated development environment to use latest packages as of 10th Feb 2026.
+* PYPI: publish to pypi using the Trust Publisher model.
 
 ## [v2.2.0](https://github.com/pythonhealthdatascience/stars-treat-sim/releases/tag/v2.2.0) - 2024-08-01
 
