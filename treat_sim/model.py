@@ -35,7 +35,15 @@ import simpy
 
 from typing import Optional, Union, List, Dict
 
-from sim_tools.distributions import Exponential, Normal, Uniform, Bernoulli, Lognormal
+from sim_tools.distributions import (
+    Exponential, 
+    Normal, 
+    Uniform, 
+    Bernoulli, 
+    Lognormal, 
+    TruncatedDistribution
+)
+
 from treat_sim.datasets import load_nelson_arrivals, valid_arrival_profile
 
 # Constants and defaults for modelling **as-is**
@@ -362,11 +370,16 @@ class Scenario:
         )
 
         # Evaluation (non-trauma only)
-        self.exam_dist = Normal(
-            self.exam_mean,
-            np.sqrt(self.exam_var),
-            minimum=self.exam_min,
-            random_seed=self.seeds[2],
+        # modified v3.0.0 to Truncated Normal Distribution
+        self.exam_dist = TruncatedDistribution(
+            Normal(
+                self.exam_mean,
+                np.sqrt(self.exam_var),
+                minimum=self.exam_min,
+                random_seed=self.seeds[2],
+            ),
+            lower_bound = 0.0
+
         )
 
         # Trauma/stablisation duration (trauma only)
