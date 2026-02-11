@@ -12,6 +12,9 @@ Consistent identifier (represents all versions, resolves to latest): [![DOI](htt
 ## Changed
 
 * BREAKING: dropped support for Python 3.8 and 3.9.
+* BREAKING: matplotlib>3.10 to remove internal warnings
+* BREAKING: pandas>=2.3.0 for compatibility with pandas 3.0
+* BREAKING: numpy>=1.26 for compatibility with python 3.12
 * DOCS: updated development environment to use latest packages as of 10th Feb 2026.
 
 ## [v2.2.0](https://github.com/pythonhealthdatascience/stars-treat-sim/releases/tag/v2.2.0) - 2024-08-01
