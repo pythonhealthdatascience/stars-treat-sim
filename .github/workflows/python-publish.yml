@@ -1,12 +1,8 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Midified in version 2.0.0 to use hatch
+# This workflow will upload a Python Package using Trusted Publishing when a release is created
+# For more information see:
+# https://docs.pypi.org/trusted-publishers/using-a-publisher/
+#
+# Modified 11/02/2026 to use PyPI trusted publichers
 
 name: Upload Python Package
 
@@ -16,26 +12,31 @@ on:
 
 permissions:
   contents: read
+  id-token: write  # required for PyPI Trusted Publishing
+  environment:
+    name: pypi
+    url: https://pypi.org/p/treat-sim
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.x'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install hatch
-    - name: Build package
-      run: hatch build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_TOKEN }}
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install hatch
+
+      - name: Build package
+        run: hatch build
+
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
