@@ -15,6 +15,7 @@ Consistent identifier (represents all versions, resolves to latest): [![DOI](htt
 * BREAKING: matplotlib>3.10 to remove internal warnings
 * BREAKING: pandas>=2.3.0 for compatibility with pandas 3.0
 * BREAKING: numpy>=1.26 for compatibility with python 3.12
+* BREAKING: matplotlib>=3.10 to remove deprecation warnings from testing.
 * BREAKING: Examination time changed from Normal distribution to truncated normal where lower bound is zero.
 * MODEL: distributions module replaced by equivalent imports from `sim-tools`
 * DOCS: updated development environment to use latest packages as of 10th Feb 2026.
