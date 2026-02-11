@@ -3,18 +3,16 @@ channels:
   - conda-forge
 dependencies:
   - hatch
-  - joblib=1.4.2
-  - matplotlib=3.8.4
-  - numpy=1.26.4
-  - pandas=2.2.0
-  - pip=24.0
-  - pytest=8.2.1
-  - pytest-cov=5.0.0
-  - python=3.10.14
-  - scipy=1.13.0
+  - joblib=1.5.3
+  - matplotlib=3.10.8
+  - numpy=2.4.2
+  - pandas=2.3.3
+  - pip=26.0.1
+  - pytest=9.0.2
+  - pytest-cov=7.0.0
+  - python=3.12
+  - scipy=1.16.3
   - simpy=4.1.1
-  - sim-tools=0.4.0
+  - sim-tools=1.0.3
   - pip:
-    - treat-sim
-  
-
+    - -e ..

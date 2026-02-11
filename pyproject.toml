@@ -8,25 +8,24 @@ dynamic = ["version"]
 description = "A Python Free and Open Source Software implementation of the Treatment Centre Model from Nelson (2013)"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.8.19"
+requires-python = ">=3.10"
 authors = [
     { name = "Thomas Monks", email = "forecast-tools@gmail.com" },
 ]
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "matplotlib>=3.3.4",
-    "numpy>=1.19.2",
-    "pandas>=1.2.3",
+    "matplotlib>=3.10.0",
+    "numpy>=1.26.0",
+    "pandas>=2.3.0",
     "scipy>=1.6.1",
-    "simpy>=4.0.1"
+    "simpy>=4.0.1",
+    "sim-tools>=1.0.3",
 ]
 
 [project.urls]
@@ -41,3 +40,6 @@ path = "treat_sim/__init__.py"
 include = [
     "/treat_sim",
 ]
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.10", "3.11", "3.12", "3.13"]

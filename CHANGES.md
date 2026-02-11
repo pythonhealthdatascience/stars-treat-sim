@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Consistent identifier (represents all versions, resolves to latest): [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10026326.svg)](https://doi.org/10.5281/zenodo.10026326)
 
+## v3.0.0 UNRELEASED
+
+## Changed
+
+* BREAKING: dropped support for Python 3.8 and 3.9.
+* BREAKING: matplotlib>3.10 to remove internal warnings
+* BREAKING: pandas>=2.3.0 for compatibility with pandas 3.0
+* BREAKING: numpy>=1.26 for compatibility with python 3.12
+* BREAKING: matplotlib>=3.10 to remove deprecation warnings from testing.
+* BREAKING: Examination time changed from Normal distribution to truncated normal where lower bound is zero.
+* MODEL: distributions module replaced by equivalent imports from `sim-tools`
+* DOCS: updated development environment to use latest packages as of 10th Feb 2026.
+* PYPI: publish to pypi using the Trust Publisher model.
+
 ## [v2.2.0](https://github.com/pythonhealthdatascience/stars-treat-sim/releases/tag/v2.2.0) - 2024-08-01
 
 ### Added
