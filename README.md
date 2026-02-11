@@ -1,5 +1,5 @@
 
-# 💫 Towards Sharing Tools, and Artifacts, for Reusable Simulation (STARS): a minimal model example
+# 💫 Towards Sharing Tools, and Artefacts, for Reusable Simulation (STARS): a minimal model example
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pythonhealthdatascience/stars-treat-sim/HEAD)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -10,7 +10,7 @@
 
 ## Overview
 
-The materials and methods in this repository support work towards developing the STARShealthcare framework (**S**haring **T**ools and **A**rtifacts for **R**eusable **S**imulations in healthcare).  The code and written materials here demonstrate the application of STARS version 1 to sharing a `SimPy` discrete-event simulation model and associated research artifacts.  
+The materials and methods in this repository support work towards developing the STARShealthcare framework (**S**haring **T**ools and **A**rtifacts for **R**eusable **S**imulations in healthcare).  The code and written materials here demonstrate the application of STARS to sharing a `SimPy` discrete-event simulation model and associated research artifacts.  
 
 * All artifacts in this repository are linked to study researchers via ORCIDs;
 * Model code is made available under an MIT license;
@@ -30,6 +30,8 @@ The materials and methods in this repository support work towards developing the
 ## Funding
 
 This code is part of independent research supported by the National Institute for Health Research Applied Research Collaboration South West Peninsula. The views expressed in this publication are those of the author(s) and not necessarily those of the National Institute for Health Research or the Department of Health and Social Care.
+
+> Between May 2024 and October 2026 this work has was supported by the MRC.
 
 ## Instructions to run the model
 
@@ -144,6 +146,12 @@ Alternatively to recieve a test coverage estimate issue the following command
 pytest --cov=treat_sim tests/
 ```
 
+To run the tests in multiple python environments i.e. Python 3.10 to 3.13 use:
+
+```bash
+hatch test --all
+```
+
 
 ## Repo overview
 
@@ -167,7 +175,6 @@ pytest --cov=treat_sim tests/
     │   └── ed_arrivals_scenario1.csv
     ├── __init__.py
     ├── datasets.py
-    ├── distributions.py
     └── model.py
 ```
 
@@ -183,7 +190,6 @@ pytest --cov=treat_sim tests/
     * `data/` - directory containing data file used by package.
     * `__init__.py` - required as part of package - contains author and version.
     * `datasets.py` - functions to load example dataset for parameterising the model.
-    * `distributions.py` - distribution classes.
     * `model.py` - example SimPy model.
 
 
